@@ -1,0 +1,58 @@
+/* Reset básico e fundo de galáxia */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+}
+
+/* Criando estrelas artificiais com box-shadow */
+body::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    box-shadow: 10vw 20vh #fff, 30vw 50vh #fff, 70vw 10vh #fff, 85vw 80vh #fff, 20vw 90vh #fff, 50vw 40vh #fff;
+    animation: piscar 3s infinite alternate;
+}
+
+@keyframes piscar {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+/* A Esfera */
+.esfera {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    
+    /* Gradiente inicial (Rosa choque) */
+    background: radial-gradient(circle at 75px 75px, #ff00de, #000);
+    box-shadow: inset -25px -25px 60px rgba(0,0,0,0.8), 
+                0 0 50px rgba(255, 0, 222, 0.4);
+    
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                background 0.5s ease, 
+                box-shadow 0.5s ease;
+    
+    animation: flutuar 4s ease-in-out infinite;
+}
+
+.esfera:hover {
+    transform: scale(1.15);
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.02); }
+}
